@@ -296,7 +296,7 @@
     }
   });
 
-  // Handle Form Submission (Real Web3Forms API Call)
+  // Handle Form Submission (Cloudflare Pages Function + Resend)
   leadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -308,7 +308,7 @@
     const json = JSON.stringify(object);
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/send-audit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -319,14 +319,14 @@
       
       const result = await response.json();
       
-      if (response.status === 200) {
+      if (response.ok) {
         // Success
         submitBtn.classList.remove('loading');
         modalContent.style.display = 'none';
         modalSuccess.style.display = 'block';
       } else {
         // API Error
-        console.error("Web3Forms Error:", result);
+        console.error("Function Error:", result);
         submitBtn.classList.remove('loading');
         alert("Something went wrong! Please try again later.");
       }
