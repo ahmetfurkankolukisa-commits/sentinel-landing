@@ -296,19 +296,46 @@
     }
   });
 
-  // Handle Form Submission (Simulate API Call)
-  leadForm.addEventListener('submit', (e) => {
+  // Handle Form Submission (Real Web3Forms API Call)
+  leadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     // Show spinner on button
     submitBtn.classList.add('loading');
     
-    // Simulate 1.5s network request
-    setTimeout(() => {
+    const formData = new FormData(leadForm);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      });
+      
+      const result = await response.json();
+      
+      if (response.status === 200) {
+        // Success
+        submitBtn.classList.remove('loading');
+        modalContent.style.display = 'none';
+        modalSuccess.style.display = 'block';
+      } else {
+        // API Error
+        console.error("Web3Forms Error:", result);
+        submitBtn.classList.remove('loading');
+        alert("Something went wrong! Please try again later.");
+      }
+    } catch (error) {
+      // Network Error
+      console.error("Submission Failed:", error);
       submitBtn.classList.remove('loading');
-      modalContent.style.display = 'none';
-      modalSuccess.style.display = 'block';
-    }, 1500);
+      alert("Network error! Please check your connection and try again.");
+    }
   });
 
 })();
