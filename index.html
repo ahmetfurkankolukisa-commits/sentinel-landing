@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sentinel — AI Guardian of Your Company's Bottom Line</title>
+  <meta name="description" content="Eliminate SaaS waste with RAG-powered semantic analysis. Sentinel identifies unused seats, contract violations, and hidden spend — saving enterprises millions." />
+
+  <link rel="stylesheet" href="index.min.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23050A18' width='100' height='100' rx='20'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='%2300E676'>S</text></svg>" />
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav class="nav" id="mainNav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">S</div>
+      Sentinel
+    </a>
+    <ul class="nav-links">
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#technology">Technology</a></li>
+      <li><a href="#calculator">ROI Calculator</a></li>
+      <li><a href="#trust">Integrations</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+      <span class="theme-toggle-track">
+        <span class="theme-toggle-icon sun">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </span>
+        <span class="theme-toggle-icon moon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </span>
+        <span class="theme-toggle-thumb"></span>
+      </span>
+    </button>
+    <button class="nav-cta shimmer-target magnetic" id="navCta">Get Started</button>
+    <div class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ============================================
+     HERO SECTION
+     ============================================ -->
+<section class="hero" id="hero">
+  <!-- Radar background -->
+  <div class="hero-radar" aria-hidden="true">
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-sweep"></div>
+    <div class="radar-center-dot"></div>
+  </div>
+
+  <!-- Grid overlay -->
+  <div class="hero-grid-overlay" aria-hidden="true"></div>
+
+  <!-- Floating particles -->
+  <div class="hero-particles" aria-hidden="true">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="badge-pulse"></span>
+      AI-Powered SaaS Intelligence
+    </div>
+
+    <h1>
+      <span class="line">Sentinel: The AI Guardian</span>
+      <span class="line">of Your Company's</span>
+      <span class="line"><span class="highlight">Bottom Line.</span></span>
+    </h1>
+
+    <p class="hero-sub">
+      Eliminate SaaS waste and secure your financial data with <strong class="highlight-silver">RAG-powered semantic analysis</strong>.
+      Stop overpaying today.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn-primary shimmer-target magnetic">Start Free Audit</button>
+      <button class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Watch Demo
+      </button>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value" data-count="34" data-suffix="%">0%</div>
+        <div class="hero-stat-label">Average Savings Found</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" data-count="2.4" data-suffix="M+" data-decimal="1">0</div>
+        <div class="hero-stat-label">Contracts Analyzed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value" data-count="99.9" data-suffix="%" data-decimal="1">0%</div>
+        <div class="hero-stat-label">Data Privacy Score</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     "FOUND MONEY" DASHBOARD
+     ============================================ -->
+<section class="dashboard-section reveal" id="dashboard">
+  <div class="container">
+    <span class="section-label"><span class="dot"></span> Found Money Dashboard</span>
+    <h2 class="section-title">See Where Your <span class="highlight">Money Hides</span></h2>
+    <p class="section-subtitle" style="margin: 0 auto;">
+      Sentinel scans every subscription, seat, and contract clause — surfacing wasted spend you didn't know existed.
+    </p>
+
+    <div class="dashboard-mockup tilt-target">
+      <!-- Floating annotations -->
+      <div class="dash-annotation left">
+        <span class="annotation-dot green"></span>
+        $12,400 recovered this month
+      </div>
+      <div class="dash-annotation right">
+        <span class="annotation-dot red"></span>
+        3 violations detected
+      </div>
+
+      <div class="dashboard-frame">
+        <!-- Title bar -->
+        <div class="dash-titlebar">
+          <div class="dash-dots"><span></span><span></span><span></span></div>
+          <span class="dash-titlebar-text">Sentinel — SaaS Spend Intelligence</span>
+          <div class="dash-titlebar-actions"><span></span><span></span></div>
+        </div>
+
+        <!-- Content area -->
+        <div class="dash-content">
+          <!-- Sidebar -->
+          <div class="dash-sidebar">
+            <div class="dash-sidebar-header">
+              <span class="icon">◆</span> Sentinel Pro
+            </div>
+            <div class="dash-nav-item active"><span class="nav-icon">📊</span> Overview</div>
+            <div class="dash-nav-item"><span class="nav-icon">💰</span> Savings</div>
+            <div class="dash-nav-item"><span class="nav-icon">📄</span> Contracts</div>
+            <div class="dash-nav-item"><span class="nav-icon">⚠️</span> Violations</div>
+            <div class="dash-nav-item"><span class="nav-icon">👥</span> Seats</div>
+            <div class="dash-nav-item"><span class="nav-icon">⚙️</span> Settings</div>
+          </div>
+
+          <!-- Main Panel -->
+          <div class="dash-main">
+            <!-- Top metric cards -->
+            <div class="dash-top-cards">
+              <div class="dash-card">
+                <div class="dash-card-label">Total SaaS Spend</div>
+                <div class="dash-card-value">$284,600</div>
+                <div class="dash-card-change negative">↑ 12% vs last quarter</div>
+              </div>
+              <div class="dash-card">
+                <div class="dash-card-label">Identified Savings</div>
+                <div class="dash-card-value savings">$97,200</div>
+                <div class="dash-card-change">↑ 34% recovery rate</div>
+              </div>
+              <div class="dash-card">
+                <div class="dash-card-label">Unused Seats</div>
+                <div class="dash-card-value">142</div>
+                <div class="dash-card-change">across 18 tools</div>
+              </div>
+            </div>
+
+            <!-- Alert rows -->
+            <div class="dash-alerts">
+              <div class="dash-alert-header">
+                <span>⚡ Active Alerts</span>
+                <span class="dash-alert-count">5 new</span>
+              </div>
+              <div class="dash-alert-row">
+                <div class="alert-icon warning">⚠️</div>
+                <div>
+                  <div class="alert-text-primary">Slack — 47 unused seats detected</div>
+                  <div class="alert-text-secondary">No activity for 90+ days</div>
+                </div>
+                <div class="alert-savings">Save $8,460/yr</div>
+                <span class="alert-status pending">Pending</span>
+              </div>
+              <div class="dash-alert-row">
+                <div class="alert-icon danger">🚨</div>
+                <div>
+                  <div class="alert-text-primary">Salesforce — Auto-renewal clause violation</div>
+                  <div class="alert-text-secondary">Contract expires in 14 days — action required</div>
+                </div>
+                <div class="alert-savings">Save $23,000/yr</div>
+                <span class="alert-status critical">Critical</span>
+              </div>
+              <div class="dash-alert-row">
+                <div class="alert-icon info">🔍</div>
+                <div>
+                  <div class="alert-text-primary">AWS — Duplicate tooling with Azure overlap</div>
+                  <div class="alert-text-secondary">3 services running on both platforms</div>
+                </div>
+                <div class="alert-savings">Save $14,800/yr</div>
+                <span class="alert-status review">Review</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     CORE TECH — BENTO GRID
+     ============================================ -->
+<section class="tech-section reveal" id="technology">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label"><span class="dot"></span> Core Technology</span>
+      <h2 class="section-title">Built on <span class="highlight">Intelligence</span></h2>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        Three pillars of AI-driven financial protection, deployed on your terms.
+      </p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- 1. Contract Reasoning (spans 2 cols) -->
+      <div class="bento-card primary reveal reveal-delay-1 shimmer-target">
+        <div class="bento-icon emerald">📜</div>
+        <h3>Contract Reasoning</h3>
+        <p>
+          Our RAG engine reads every clause, amendment, and addendum — flagging auto-renewals,
+          escalation clauses, and terms that cost you money. Semantic understanding, not keyword matching.
+        </p>
+        <div class="bento-visual">
+          <div class="contract-visual">
+            <div class="clause-line">
+              <span class="line-num">14</span>
+              <span>Section 8.2 — Pricing & Renewal Terms</span>
+            </div>
+            <div class="clause-line flagged">
+              <span class="line-num">15</span>
+              <span>"Auto-renew at 115% of current rate…"</span>
+              <span class="tag">⚠ FLAGGED</span>
+            </div>
+            <div class="clause-line">
+              <span class="line-num">16</span>
+              <span>unless written notice is provided 60 days</span>
+            </div>
+            <div class="clause-line flagged">
+              <span class="line-num">17</span>
+              <span>"prior to the anniversary date."</span>
+              <span class="tag">⏰ DEADLINE</span>
+            </div>
+            <div class="clause-line">
+              <span class="line-num">18</span>
+              <span>Section 8.3 — Volume Commitments</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Sovereign AI (spans 2 rows) -->
+      <div class="bento-card featured reveal reveal-delay-2 shimmer-target">
+        <div class="bento-icon cyan">🏛️</div>
+        <h3>Local &amp; Sovereign AI Deployment</h3>
+        <p>
+          Your data never leaves your infrastructure. Run Sentinel
+          on-premise or in your private cloud — full sovereignty,
+          zero external dependencies. Meets GDPR, SOC 2, and
+          ISO 27001 requirements out of the box.
+        </p>
+        <div class="bento-visual" style="flex:1; display:flex;">
+          <div class="sovereign-visual">
+            <div class="server-nodes">
+              <div class="server-node">🏢</div>
+              <div class="node-connector"></div>
+              <div class="server-node">🔒</div>
+              <div class="node-connector"></div>
+              <div class="server-node">🛡️</div>
+            </div>
+            <span class="sovereign-label">Your Cloud → Your Rules → Zero Egress</span>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:auto;">
+              <span class="sovereign-label">GDPR ✓</span>
+              <span class="sovereign-label">SOC 2 ✓</span>
+              <span class="sovereign-label">ISO 27001 ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Auto-Negotiation -->
+      <div class="bento-card reveal reveal-delay-3 shimmer-target">
+        <div class="bento-icon blue">🤖</div>
+        <h3>Auto-Negotiation</h3>
+        <p>
+          AI-generated counter-proposals with market benchmarks.
+          Sentinel drafts negotiation emails, tracks vendor
+          responses, and locks in savings automatically.
+        </p>
+        <div class="bento-visual">
+          <div class="negotiate-visual">
+            <div class="negotiate-step">
+              <span class="step-num">1</span>
+              Analyze current contract & market rates
+            </div>
+            <div class="negotiate-step">
+              <span class="step-num">2</span>
+              Generate counter-proposal with benchmarks
+            </div>
+            <div class="negotiate-step">
+              <span class="step-num">3</span>
+              Send to vendor via secure channel
+            </div>
+            <div class="negotiate-step">
+              <span class="step-num">4</span>
+              Track response & lock in new rate
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Extra mini card -->
+      <div class="bento-card reveal reveal-delay-4 shimmer-target">
+        <div class="bento-icon emerald">📡</div>
+        <h3>Real-Time Monitoring</h3>
+        <p>
+          Continuous scan of 200+ SaaS vendors. Get instant alerts
+          for license changes, usage anomalies, and shadow IT.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     ROI CALCULATOR
+     ============================================ -->
+<section class="roi-section reveal" id="calculator">
+  <div class="container">
+    <div class="roi-wrapper">
+      <div class="roi-header">
+        <span class="section-label"><span class="dot"></span> ROI Calculator</span>
+        <h2 class="section-title">Calculate Your <span class="highlight">Hidden Waste</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto;">
+          Drag the sliders to estimate how much Sentinel can recover for your organization.
+        </p>
+      </div>
+
+      <div class="roi-body">
+        <!-- Inputs -->
+        <div class="roi-inputs">
+          <div class="roi-field">
+            <label>
+              Monthly SaaS Spend
+              <span class="roi-field-value" id="spendValue">$50,000</span>
+            </label>
+            <input
+              type="range" class="roi-slider" id="spendSlider"
+              min="5000" max="500000" value="50000" step="1000"
+            />
+          </div>
+          <div class="roi-field">
+            <label>
+              Number of Employees
+              <span class="roi-field-value" id="empValue">200</span>
+            </label>
+            <input
+              type="range" class="roi-slider" id="empSlider"
+              min="10" max="5000" value="200" step="10"
+            />
+          </div>
+          <div class="roi-field">
+            <label>
+              Number of SaaS Tools
+              <span class="roi-field-value" id="toolValue">25</span>
+            </label>
+            <input
+              type="range" class="roi-slider" id="toolSlider"
+              min="5" max="200" value="25" step="1"
+            />
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="roi-results">
+          <div class="roi-result-card primary-result">
+            <div class="roi-result-label">Estimated Annual Savings</div>
+            <div class="roi-result-value" id="roiSavings">$204,000</div>
+            <div class="roi-result-sub">Based on industry benchmarks</div>
+          </div>
+          <div class="roi-result-breakdown">
+            <div class="roi-mini-stat">
+              <div class="value" id="roiSeats">$72,000</div>
+              <div class="label">Unused Seat Recovery</div>
+            </div>
+            <div class="roi-mini-stat">
+              <div class="value" id="roiContracts">$54,000</div>
+              <div class="label">Contract Optimization</div>
+            </div>
+            <div class="roi-mini-stat">
+              <div class="value" id="roiDuplicate">$48,000</div>
+              <div class="label">Duplicate Tool Savings</div>
+            </div>
+            <div class="roi-mini-stat">
+              <div class="value" id="roiNegotiate">$30,000</div>
+              <div class="label">Negotiation Gains</div>
+            </div>
+          </div>
+          <div class="roi-result-card">
+            <div class="roi-result-label">Payback Period</div>
+            <div class="roi-result-value silver" id="roiPayback">1.2 mo</div>
+            <div class="roi-result-sub">Time to recoup Sentinel investment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     TRUST BAR
+     ============================================ -->
+<section class="trust-section reveal" id="trust">
+  <div class="container">
+    <p class="trust-label">Trusted Integrations &amp; Compliance</p>
+
+    <div class="trust-logos">
+      <div class="trust-logo">
+        <div class="logo-glyph">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14.5 2H6a2 2 0 00-2 2v5.5h2V4h8v5h5v11H6v-3.5H4V20a2 2 0 002 2h13a1 1 0 001-1V7l-5.5-5z" fill="#546E7A"/><path d="M2 14l3-3 3 3M5 11v6" stroke="#546E7A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        Slack
+      </div>
+      <div class="trust-logo">
+        <div class="logo-glyph">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l9 4.5v7c0 4.5-3.5 8.5-9 10.5-5.5-2-9-6-9-10.5v-7L12 2z" fill="none" stroke="#546E7A" stroke-width="1.5"/><path d="M8 12l3 3 5-6" stroke="#546E7A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        AWS
+      </div>
+      <div class="trust-logo">
+        <div class="logo-glyph">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#546E7A" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#546E7A" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        Salesforce
+      </div>
+      <div class="trust-logo">
+        <div class="logo-glyph">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="#546E7A" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="#546E7A" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="#546E7A" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="#546E7A" stroke-width="1.5"/></svg>
+        </div>
+        Microsoft 365
+      </div>
+      <div class="trust-logo">
+        <div class="logo-glyph">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="#546E7A" stroke-width="1.5"/><path d="M9 9h6v6H9z" stroke="#546E7A" stroke-width="1.5"/><path d="M4 4l5 5M20 4l-5 5M4 20l5-5M20 20l-5-5" stroke="#546E7A" stroke-width="1.5"/></svg>
+        </div>
+        Google Workspace
+      </div>
+    </div>
+
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <span class="badge-icon">🔒</span>
+        Privacy-First Architecture
+      </div>
+      <div class="trust-badge">
+        <span class="badge-icon">🛡️</span>
+        SOC 2 Type II Certified
+      </div>
+      <div class="trust-badge">
+        <span class="badge-icon">🌐</span>
+        GDPR Compliant
+      </div>
+      <div class="trust-badge">
+        <span class="badge-icon">✅</span>
+        ISO 27001
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo-icon" style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--emerald),var(--emerald-dim));display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--bg-deep);font-weight:900;">S</div>
+        Sentinel
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">Product</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Docs</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Security</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">© 2026 Sentinel. All rights reserved. Built for enterprises that refuse to overpay.</p>
+  </div>
+</footer>
+
+
+<script src="main.min.js"></script>
+
+</body>
+</html>
