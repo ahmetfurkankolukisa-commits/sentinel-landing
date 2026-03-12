@@ -249,4 +249,66 @@
     setTheme(current === 'dark' ? 'light' : 'dark');
   });
 
+  /* ═══════════════════════════════════════════
+     8. LEAD CAPTURE MODAL LOGIC
+     ═══════════════════════════════════════════ */
+  const modalOverlay  = document.getElementById('leadModal');
+  const modalContent  = document.getElementById('modalContent');
+  const modalSuccess  = document.getElementById('modalSuccess');
+  const leadForm      = document.getElementById('leadForm');
+  const closeBtn      = document.getElementById('closeModal');
+  const successClose  = document.getElementById('successCloseBtn');
+  const submitBtn     = document.getElementById('modalSubmitBtn');
+
+  function openModal() {
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    // Reset state in case it was opened before
+    modalContent.style.display = 'block';
+    modalSuccess.style.display = 'none';
+    leadForm.reset();
+  }
+
+  function closeModalDialog() {
+    modalOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  // Open modal on any trigger click
+  document.querySelectorAll('.trigger-modal').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  // Close handlers
+  closeBtn.addEventListener('click', closeModalDialog);
+  successClose.addEventListener('click', closeModalDialog);
+
+  // Close on outside click
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModalDialog();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay.getAttribute('aria-hidden') === 'false') {
+      closeModalDialog();
+    }
+  });
+
+  // Handle Form Submission (Simulate API Call)
+  leadForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Show spinner on button
+    submitBtn.classList.add('loading');
+    
+    // Simulate 1.5s network request
+    setTimeout(() => {
+      submitBtn.classList.remove('loading');
+      modalContent.style.display = 'none';
+      modalSuccess.style.display = 'block';
+    }, 1500);
+  });
+
 })();
