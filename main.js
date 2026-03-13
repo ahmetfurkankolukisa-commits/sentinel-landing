@@ -308,19 +308,42 @@
     }
   });
 
-  // Handle Form Submission (Simulation)
-  leadForm.addEventListener('submit', (e) => {
+  // Handle Form Submission
+  leadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     // Show spinner on button
     submitBtn.classList.add('loading');
+
+    const formData = new FormData(leadForm);
+    const payload = {
+      email: formData.get('email'),
+      company: formData.get('company')
+    };
     
-    // Simulate network delay (1.5 seconds)
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/submit-audit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        modalContent.style.display = 'none';
+        modalSuccess.style.display = 'block';
+      } else {
+        alert('Error: ' + (result.error || 'Failed to submit request. Please try again.'));
+      }
+    } catch (error) {
+      console.error('Submission Error:', error);
+      alert('Network error. Please try again later.');
+    } finally {
       submitBtn.classList.remove('loading');
-      modalContent.style.display = 'none';
-      modalSuccess.style.display = 'block';
-    }, 1500);
+    }
   });
 
   /* ═══════════════════════════════════════════
