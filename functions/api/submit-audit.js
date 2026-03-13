@@ -71,9 +71,7 @@ export async function onRequestPost(context) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        // Resend testing domain default (onboarding@resend.dev) can only send to the email address you verified on Resend.
-        // For production, this should be something like hello@sentinel.com
-        from: "Sentinel <onboarding@resend.dev>",
+        from: "Sentinel <ahmetfurkankolukisa@gmail.com>",
         to: [email],
         reply_to: "support@sentinel.com",
         subject: "Your Sentinel Audit Request is Confirmed",
