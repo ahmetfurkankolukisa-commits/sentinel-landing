@@ -296,46 +296,19 @@
     }
   });
 
-  // Handle Form Submission (Cloudflare Pages Function + Resend)
-  leadForm.addEventListener('submit', async (e) => {
+  // Handle Form Submission (Simulation)
+  leadForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
     // Show spinner on button
     submitBtn.classList.add('loading');
     
-    const formData = new FormData(leadForm);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    try {
-      const response = await fetch('/api/send-audit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: json
-      });
-      
-      const result = await response.json();
-      
-      if (response.ok) {
-        // Success
-        submitBtn.classList.remove('loading');
-        modalContent.style.display = 'none';
-        modalSuccess.style.display = 'block';
-      } else {
-        // API Error
-        console.error("Function Error:", result);
-        submitBtn.classList.remove('loading');
-        alert("Something went wrong! Please try again later.");
-      }
-    } catch (error) {
-      // Network Error
-      console.error("Submission Failed:", error);
+    // Simulate network delay (1.5 seconds)
+    setTimeout(() => {
       submitBtn.classList.remove('loading');
-      alert("Network error! Please check your connection and try again.");
-    }
+      modalContent.style.display = 'none';
+      modalSuccess.style.display = 'block';
+    }, 1500);
   });
 
 })();
