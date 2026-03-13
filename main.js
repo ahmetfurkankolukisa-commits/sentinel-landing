@@ -422,6 +422,13 @@
     });
   });
   /* ═══════════════════════════════════════════
+     11b. COMING SOON LINKS — prevent navigation
+     ═══════════════════════════════════════════ */
+  document.querySelectorAll('.coming-soon').forEach(link => {
+    link.addEventListener('click', e => e.preventDefault());
+  });
+
+  /* ═══════════════════════════════════════════
      11. CURSOR GLOW (Desktop Only)
      ═══════════════════════════════════════════ */
   const isFinePointer = window.matchMedia('(pointer: fine)').matches;
