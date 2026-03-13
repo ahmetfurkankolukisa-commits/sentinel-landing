@@ -421,5 +421,44 @@
       }
     });
   });
+  /* ═══════════════════════════════════════════
+     11. CURSOR GLOW (Desktop Only)
+     ═══════════════════════════════════════════ */
+  const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+  
+  if (isFinePointer) {
+    const ring = document.getElementById('cursorRing');
+
+    if (ring) {
+      let mouseX = -200, mouseY = -200;
+      let ringX  = -200, ringY  = -200;
+      const LERP_SPEED = 0.12;
+
+      document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      }, { passive: true });
+
+      // Ring trails with LERP
+      function animateRing() {
+        ringX += (mouseX - ringX) * LERP_SPEED;
+        ringY += (mouseY - ringY) * LERP_SPEED;
+        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+        requestAnimationFrame(animateRing);
+      }
+      requestAnimationFrame(animateRing);
+
+      // Hover detection — glow gets bigger on interactive elements
+      const hoverTargets = document.querySelectorAll('a, button, .faq-question, .btn-primary, .btn-secondary, .nav-cta, .theme-toggle, input, .trust-logo');
+      hoverTargets.forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+      });
+
+      // Hide glow when mouse leaves viewport
+      document.addEventListener('mouseleave', () => ring.classList.add('hidden'));
+      document.addEventListener('mouseenter', () => ring.classList.remove('hidden'));
+    }
+  }
 
 })();
