@@ -15,10 +15,22 @@
 
   /* ─── Mobile nav toggle ─── */
   const toggle = document.getElementById('navToggle');
-  toggle.addEventListener('click', () => {
-    const links = document.querySelector('.nav-links');
-    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-  });
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  }
 
   /* ═══════════════════════════════════════════
      1. SCROLL REVEAL — staggered
