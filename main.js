@@ -311,4 +311,103 @@
     }, 1500);
   });
 
+  /* ═══════════════════════════════════════════
+     9. AI TERMINAL — TYPING ANIMATION
+     ═══════════════════════════════════════════ */
+  const terminalOutput = document.getElementById('terminalOutput');
+  const terminalBody   = document.getElementById('terminalBody');
+  const termCursor     = document.getElementById('termCursor');
+
+  const TERM_LINES = [
+    { text: '> Initializing Sentinel AI Engine...', type: 'cmd' },
+    { text: '> Loading contract: Slack Enterprise — FY2025', type: 'cmd' },
+    { text: '> Scanning 142 pages for financial clauses...', type: 'cmd' },
+    { text: '  ████████████████████████████████ 100%', type: 'dim' },
+    { text: '[INFO] Found: Auto-renewal clause at 115% rate increase', type: 'info' },
+    { text: '[WARNING] Deadline: Renewal window closes in 14 days', type: 'warning' },
+    { text: '[INFO] Analyzing seat utilization across 340 licenses...', type: 'info' },
+    { text: '[WARNING] 47 seats inactive for 90+ days — $8,460/yr recoverable', type: 'warning' },
+    { text: '> Cross-referencing market benchmarks (Q1 2026)...', type: 'cmd' },
+    { text: '[INFO] Current rate: $18/seat — Market median: $12/seat', type: 'info' },
+    { text: '> Generating AI counter-proposal...', type: 'cmd' },
+    { text: '[SUCCESS] Counter-proposal ready — projected savings: $31,460/yr', type: 'success' },
+    { text: '> Analysis complete. 3 action items flagged. ✓', type: 'success' },
+  ];
+
+  let termAnimRunning = false;
+
+  async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async function typeLine(lineData) {
+    const lineEl = document.createElement('div');
+    lineEl.className = 'term-line ' + lineData.type;
+    terminalOutput.appendChild(lineEl);
+
+    // Move cursor after the line
+    terminalOutput.appendChild(termCursor);
+
+    for (let i = 0; i < lineData.text.length; i++) {
+      lineEl.textContent += lineData.text[i];
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+      await sleep(18 + Math.random() * 22);
+    }
+
+    // Pause between lines
+    await sleep(350 + Math.random() * 400);
+  }
+
+  async function runTerminalAnimation() {
+    if (termAnimRunning) return;
+    termAnimRunning = true;
+
+    while (true) {
+      // Clear previous output
+      terminalOutput.innerHTML = '';
+      terminalOutput.appendChild(termCursor);
+
+      for (const line of TERM_LINES) {
+        await typeLine(line);
+      }
+
+      // Pause at the end before restarting
+      await sleep(5000);
+    }
+  }
+
+  const termSection = document.getElementById('aiTerminal');
+  if (termSection) {
+    const termObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          runTerminalAnimation();
+          termObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    termObs.observe(termSection);
+  }
+  /* ═══════════════════════════════════════════
+     10. FAQ ACCORDION
+     ═══════════════════════════════════════════ */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isActive = item.classList.contains('active');
+
+      // Close all other items
+      document.querySelectorAll('.faq-item.active').forEach(openItem => {
+        openItem.classList.remove('active');
+        openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle clicked item
+      if (!isActive) {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
 })();

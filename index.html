@@ -120,6 +120,36 @@
 
 
 <!-- ============================================
+     AI TERMINAL — LIVE ANALYSIS DEMO
+     ============================================ -->
+<section class="ai-terminal-section reveal" id="aiTerminal">
+  <div class="container">
+    <div class="ai-terminal-header">
+      <span class="section-label"><span class="dot"></span> AI in Action</span>
+      <h2 class="section-title">Watch Sentinel <span class="highlight">Think</span></h2>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        See how our RAG engine scans contracts, detects waste, and generates savings — in real time.
+      </p>
+    </div>
+
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <div class="terminal-dots"><span></span><span></span><span></span></div>
+        <span class="terminal-title">Sentinel AI — Contract Analysis</span>
+        <div class="terminal-status">
+          <span class="status-dot"></span> Live
+        </div>
+      </div>
+      <div class="terminal-body" id="terminalBody">
+        <div id="terminalOutput"></div>
+        <span class="term-cursor" id="termCursor">_</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
      "FOUND MONEY" DASHBOARD
      ============================================ -->
 <section class="dashboard-section reveal" id="dashboard">
@@ -430,6 +460,96 @@
             <div class="roi-result-value silver" id="roiPayback">1.2 mo</div>
             <div class="roi-result-sub">Time to recoup Sentinel investment</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     FAQ — ACCORDION
+     ============================================ -->
+<section class="faq-section reveal" id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <span class="section-label"><span class="dot"></span> FAQ</span>
+      <h2 class="section-title">Frequently Asked <span class="highlight">Questions</span></h2>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        Everything you need to know before your first audit.
+      </p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Is my financial data safe with Sentinel?</span>
+          <span class="faq-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely. Sentinel runs entirely within your own infrastructure — on-premise or in your private cloud. Your data never leaves your perimeter. We are SOC 2 Type II certified, GDPR compliant, and ISO 27001 audited. Zero external API calls, zero data egress.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Which SaaS platforms does Sentinel integrate with?</span>
+          <span class="faq-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <p>Sentinel connects with 200+ SaaS vendors out of the box, including Slack, Salesforce, AWS, Microsoft 365, Google Workspace, HubSpot, Zoom, Jira, and more. Custom connectors can be built for proprietary or internal tools within days.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>How long does it take to set up Sentinel?</span>
+          <span class="faq-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <p>Most organizations are live within 48 hours. The initial free audit requires zero integration — just upload your contracts and we handle the rest. Full platform deployment with SSO and API connections typically takes 3–5 business days.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>What kind of savings can I realistically expect?</span>
+          <span class="faq-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <p>On average, enterprises discover 25–34% in recoverable SaaS waste. This includes unused seats, duplicate tools, unfavorable contract terms, and missed negotiation opportunities. Our ROI calculator above gives you a personalized estimate based on your organization's size.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>How does the AI contract analysis work?</span>
+          <span class="faq-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <p>Sentinel uses Retrieval-Augmented Generation (RAG) to semantically understand every clause in your contracts — not just keyword matching. It flags auto-renewal traps, escalation clauses, volume commitments, and generates AI-powered counter-proposals with real market benchmarks.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>What happens after the free audit?</span>
+          <span class="faq-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <p>You receive a detailed savings report with actionable recommendations — completely free, no strings attached. If you'd like to automate ongoing monitoring and negotiations, our team will walk you through flexible pricing plans that scale with your organization.</p>
         </div>
       </div>
     </div>
