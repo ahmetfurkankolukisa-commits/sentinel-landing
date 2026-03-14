@@ -21,10 +21,37 @@ async function handleSubmitAudit(request, env) {
       return jsonResponse({ error: "Invalid JSON body" }, 400);
     }
 
-    const { email, company } = body;
+    const { email, company, turnstileToken } = body;
 
     if (!email || !company) {
       return jsonResponse({ error: "Email and Company Name are required" }, 400);
+    }
+
+    if (!turnstileToken) {
+      return jsonResponse({ error: "Turnstile token is missing. Please complete the security check." }, 400);
+    }
+
+    const TURNSTILE_SECRET_KEY = env.TURNSTILE_SECRET_KEY;
+    if (TURNSTILE_SECRET_KEY) {
+      // Verify the token with Cloudflare
+      const formData = new FormData();
+      formData.append('secret', TURNSTILE_SECRET_KEY);
+      formData.append('response', turnstileToken);
+      formData.append('remoteip', request.headers.get('CF-Connecting-IP') || '');
+
+      const turnstileVerify = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const turnstileResult = await turnstileVerify.json();
+
+      if (!turnstileResult.success) {
+        console.error('Turnstile verification failed:', turnstileResult);
+        return jsonResponse({ error: "Security check failed. Please try again." }, 403);
+      }
+    } else {
+      console.warn("TURNSTILE_SECRET_KEY is not set in environment variables. Skipping verification.");
     }
 
     const RESEND_API_KEY = env.RESEND_API_KEY || "re_BwCbz1BS_GUD6WDYdKpBNo14Y6MAWWqas";

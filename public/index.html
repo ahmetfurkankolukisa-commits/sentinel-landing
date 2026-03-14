@@ -10,6 +10,9 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23050A18' width='100' height='100' rx='20'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='%2300E676'>S</text></svg>" />
+
+  <!-- Cloudflare Turnstile -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -774,6 +777,10 @@
           <label for="companyName">Company Name</label>
           <input type="text" name="company" id="companyName" placeholder="Acme Corp" required />
         </div>
+        
+        <!-- Cloudflare Turnstile Widget -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAACq8Iuaf3yUkyTbf" data-theme="dark" style="margin-bottom: var(--space-md);"></div>
+
         <button type="submit" class="btn-primary modal-submit magnetic shimmer-target" id="modalSubmitBtn">
           Request Audit
         </button>

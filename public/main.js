@@ -370,13 +370,21 @@
   leadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    submitBtn.classList.add('loading');
-
     const formData = new FormData(leadForm);
     const company = formData.get('company');
+    const turnstileToken = formData.get('cf-turnstile-response');
+
+    if (!turnstileToken) {
+      alert("Please complete the security check.");
+      return;
+    }
+
+    submitBtn.classList.add('loading');
+
     const payload = {
       email: formData.get('email'),
-      company: company
+      company: company,
+      turnstileToken: turnstileToken
     };
     
     try {
