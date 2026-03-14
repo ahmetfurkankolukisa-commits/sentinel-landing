@@ -1,5 +1,5 @@
 name = "sentinel-landing"
-main = "public/_worker.js"
+main = "_worker.js"
 compatibility_date = "2024-12-01"
 
 [assets]
