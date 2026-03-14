@@ -80,7 +80,7 @@ async function handleSubmitAudit(request, env) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        from: "Sentinel <onboarding@resend.dev>",
+        from: "Sentinel <contact@sentinell-ai.com>",
         to: [email],
         subject: "Your Sentinel Audit Request is Confirmed",
         html: htmlContent
