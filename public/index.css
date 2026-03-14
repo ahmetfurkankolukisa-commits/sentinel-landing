@@ -1165,14 +1165,14 @@ input, select {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto auto;
-  gap: var(--space-lg);
+  gap: var(--space-md); /* Reduced from space-lg */
 }
 
 .bento-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: var(--space-2xl);
+  padding: var(--space-xl); /* Reduced from space-2xl */
   position: relative;
   overflow: hidden;
   transition: all var(--duration-normal) var(--ease-smooth);
@@ -1218,14 +1218,14 @@ input, select {
 }
 
 .bento-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-lg);
+  width: 44px; /* Reduced from 52px */
+  height: 44px; /* Reduced from 52px */
+  border-radius: var(--radius-md); /* Reduced from radius-lg */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  margin-bottom: var(--space-xl);
+  font-size: 20px; /* Reduced from 22px */
+  margin-bottom: var(--space-lg); /* Reduced from space-xl */
   position: relative;
 }
 
@@ -1248,21 +1248,21 @@ input, select {
 }
 
 .bento-card h3 {
-  font-size: var(--text-xl);
+  font-size: var(--text-lg); /* Reduced from text-xl */
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs); /* Reduced from space-sm */
 }
 
 .bento-card p {
-  font-size: var(--text-sm);
+  font-size: 13px; /* Slightly smaller text */
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.6; /* Reduced line height */
   flex: 1;
 }
 
 .bento-visual {
-  margin-top: var(--space-xl);
+  margin-top: var(--space-lg); /* Reduced from space-xl */
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--bg-surface);
