@@ -268,7 +268,6 @@
      ═══════════════════════════════════════════ */
   const modalOverlay  = document.getElementById('leadModal');
   const modalContent  = document.getElementById('modalContent');
-  const modalSuccess  = document.getElementById('modalSuccess');
   const leadForm      = document.getElementById('leadForm');
   const closeBtn      = document.getElementById('closeModal');
   const successClose  = document.getElementById('successCloseBtn');
@@ -278,7 +277,6 @@
     modalOverlay.setAttribute('aria-hidden', 'false');
     // Reset state in case it was opened before
     modalContent.style.display = 'block';
-    modalSuccess.style.display = 'none';
     document.getElementById('modalAnalysis').style.display = 'none';
     document.getElementById('modalReport').style.display = 'none';
     leadForm.reset();
@@ -398,8 +396,8 @@
       const response = await fetchPromise;
 
       if (response.ok) {
-        document.getElementById('modalAnalysis').style.display = 'none';
-        modalSuccess.style.display = 'block';
+        // Success state is now fully integrated into the analysis view (it stays visible).
+        // The playModalAnalysis already faded in the final report and "Return to Site" button.
       } else {
         let errorMsg = 'Failed to submit request. Please try again.';
         try {
