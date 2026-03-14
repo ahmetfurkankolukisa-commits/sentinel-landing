@@ -234,8 +234,10 @@
      ═══════════════════════════════════════════ */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href === '#') return; // skip bare hash links
       e.preventDefault();
-      const target = document.querySelector(a.getAttribute('href'));
+      const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
@@ -330,13 +332,17 @@
         body: JSON.stringify(payload)
       });
 
-      const result = await response.json();
-
       if (response.ok) {
         modalContent.style.display = 'none';
         modalSuccess.style.display = 'block';
       } else {
-        alert('Error: ' + (result.error || 'Failed to submit request. Please try again.'));
+        let errorMsg = 'Failed to submit request. Please try again.';
+        try {
+          const result = await response.json();
+          errorMsg = result.error || errorMsg;
+        } catch (parseErr) { /* response was not JSON */ }
+        console.error('API Error:', response.status, errorMsg);
+        alert('Error: ' + errorMsg);
       }
     } catch (error) {
       console.error('Submission Error:', error);
