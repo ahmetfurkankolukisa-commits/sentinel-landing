@@ -94,7 +94,43 @@ async function handleSubmitAudit(request, env) {
       return jsonResponse({ error: "Failed to send email", details: resendData }, 500);
     }
 
-    return jsonResponse({ success: true, message: "Email sent", id: resendData.id }, 200);
+    // Send Admin Notification Email
+    const adminHtmlContent = `
+      <div style="font-family: sans-serif; padding: 20px;">
+        <h2 style="color: #00E676;">New Audit Request! 🚀</h2>
+        <p>A new lead has requested a SaaS Waste Audit.</p>
+        <table style="width: 100%; max-width: 500px; text-align: left; border-collapse: collapse;">
+          <tr>
+            <th style="padding: 10px; border-bottom: 1px solid #eee;">Company</th>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>${company}</strong></td>
+          </tr>
+          <tr>
+            <th style="padding: 10px; border-bottom: 1px solid #eee;">Email</th>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">${email}</td>
+          </tr>
+        </table>
+        <p style="margin-top: 20px; font-size: 12px; color: #666;">
+          <em>Tip: You can reply directly to this email to contact the lead.</em>
+        </p>
+      </div>
+    `;
+
+    await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        from: "Sentinel Alerts <contact@sentinell-ai.com>",
+        to: ["contact@sentinell-ai.com"], // Sending to the admin
+        reply_to: email, // If admin hits reply, it goes to the lead
+        subject: `New Lead Alert: ${company}`,
+        html: adminHtmlContent
+      })
+    });
+
+    return jsonResponse({ success: true, message: "Emails sent", id: resendData.id }, 200);
 
   } catch (error) {
     console.error("Internal Server Error:", error);
