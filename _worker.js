@@ -97,7 +97,7 @@ async function handleSubmitAudit(request, env) {
     // Send Admin Notification Email
     const adminHtmlContent = `
       <div style="font-family: sans-serif; padding: 20px;">
-        <h2 style="color: #00E676;">New Audit Request! 🚀</h2>
+        <h2 style="color: #00E676;">New Audit Request</h2>
         <p>A new lead has requested a SaaS Waste Audit.</p>
         <table style="width: 100%; max-width: 500px; text-align: left; border-collapse: collapse;">
           <tr>
