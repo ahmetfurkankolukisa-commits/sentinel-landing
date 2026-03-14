@@ -109,8 +109,7 @@
   const toolSlider  = document.getElementById('toolSlider');
 
   function formatCurrency(n) {
-    if (n >= 1_000_000) return '$' + (n / 1_000_000).toFixed(1) + 'M';
-    if (n >= 1_000)     return '$' + (n / 1_000).toFixed(0) + 'k';
+    // Show full numbers to make the rolling effect more satisfying
     return '$' + n.toLocaleString();
   }
 
@@ -195,7 +194,15 @@
     const total = Math.round(seatSavings + contractSavings + duplicateSavings + negotiateSavings);
 
     const sentinelCost  = 15000 + (emps * 5 * 12);
-    const paybackMonths = total > 0 ? Math.max(0.5, (sentinelCost / total) * 12).toFixed(1) : '0';
+    // Calculate glow intensity (from 0 to 1 based on savings size up to a max value)
+    // Max reference value for full glow could be $500,000
+    const maxGlowRef = 500000;
+    let glowIntensity = Math.min(total / maxGlowRef, 1);
+    
+    const primaryResultCard = document.querySelector('.roi-result-card.primary-result');
+    if (primaryResultCard) {
+      primaryResultCard.style.setProperty('--dynamic-glow', glowIntensity.toFixed(2));
+    }
 
     animateValue('roiSavings',   total,                      formatCurrency);
     animateValue('roiSeats',     Math.round(seatSavings),     formatCurrency);
