@@ -745,7 +745,7 @@
         <li><a href="#" class="coming-soon" data-tooltip="Coming Soon">Docs</a></li>
         <li><a href="#" class="coming-soon" data-tooltip="Coming Soon">Blog</a></li>
         <li><a href="#trust">Security</a></li>
-        <li><a href="#" class="open-modal-btn">Contact</a></li>
+        <li><a href="#" class="trigger-modal">Contact</a></li>
       </ul>
     </div>
     <p class="footer-copy">© 2026 Sentinel. All rights reserved. Built for enterprises that refuse to overpay.</p>
@@ -780,6 +780,50 @@
       </form>
     </div>
     
+    <!-- Analysis Phase -->
+    <div class="modal-analysis" id="modalAnalysis" style="display: none;">
+      <div class="modal-analysis-header">
+        <div class="analysis-pulse"></div>
+        <span>Sentinel AI is analyzing...</span>
+      </div>
+      <div class="modal-terminal">
+        <div class="modal-term-titlebar">
+          <div class="terminal-dots"><span></span><span></span><span></span></div>
+          <span class="modal-term-title">Sentinel — Quick Scan</span>
+          <div class="terminal-status"><span class="status-dot"></span> Live</div>
+        </div>
+        <div class="modal-term-body" id="modalTermBody">
+          <div id="modalTermOutput"></div>
+          <span class="term-cursor" id="modalTermCursor">_</span>
+        </div>
+      </div>
+      <div class="modal-report" id="modalReport" style="display: none;">
+        <div class="modal-report-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Preliminary Savings Identified
+        </div>
+        <div class="modal-report-grid">
+          <div class="modal-stat-card">
+            <div class="modal-stat-value" id="reportSavings">$0</div>
+            <div class="modal-stat-label">Est. Annual Savings</div>
+          </div>
+          <div class="modal-stat-card">
+            <div class="modal-stat-value" id="reportSeats">0</div>
+            <div class="modal-stat-label">Unused Seats Found</div>
+          </div>
+          <div class="modal-stat-card">
+            <div class="modal-stat-value" id="reportRisks">0</div>
+            <div class="modal-stat-label">Contract Risks</div>
+          </div>
+          <div class="modal-stat-card">
+            <div class="modal-stat-value" id="reportDuplicate">0</div>
+            <div class="modal-stat-label">Duplicate Tools</div>
+          </div>
+        </div>
+        <p class="modal-report-note">Full detailed report will be delivered to your inbox within 48 hours.</p>
+      </div>
+    </div>
+
     <!-- Success State -->
     <div class="modal-success" id="modalSuccess" style="display: none;">
       <div class="success-icon">

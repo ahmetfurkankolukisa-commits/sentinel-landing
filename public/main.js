@@ -279,6 +279,8 @@
     // Reset state in case it was opened before
     modalContent.style.display = 'block';
     modalSuccess.style.display = 'none';
+    document.getElementById('modalAnalysis').style.display = 'none';
+    document.getElementById('modalReport').style.display = 'none';
     leadForm.reset();
   }
 
@@ -310,21 +312,78 @@
     }
   });
 
+  // Modal Analysis Animation Sequence
+  async function playModalAnalysis(companyName) {
+    const analysisContainer = document.getElementById('modalAnalysis');
+    const termOutput = document.getElementById('modalTermOutput');
+    const termCursor = document.getElementById('modalTermCursor');
+    const termBody = document.getElementById('modalTermBody');
+    const reportSection = document.getElementById('modalReport');
+    
+    // Reset from previous runs
+    termOutput.innerHTML = '';
+    reportSection.style.display = 'none';
+    analysisContainer.style.display = 'block';
+    
+    const lines = [
+      { text: `> Initializing secure connection to ${companyName}...`, type: 'cmd' },
+      { text: `> Indexing active SaaS subscriptions...`, type: 'cmd' },
+      { text: `[INFO] Found 142 active contracts`, type: 'info' },
+      { text: `> Running RAG semantic analysis on contract clauses...`, type: 'cmd' },
+      { text: `[WARNING] Detected 3 auto-renewal escalations`, type: 'warning' },
+      { text: `> Cross-referencing seat utilization against Okta logs...`, type: 'cmd' },
+      { text: `  ████████████████████████████████ 100%`, type: 'dim' },
+      { text: `[SUCCESS] Analysis complete. Generating preliminary report...`, type: 'success' },
+    ];
+
+    async function typeLine(lineData) {
+      const lineEl = document.createElement('div');
+      lineEl.className = 'term-line ' + lineData.type;
+      termOutput.appendChild(lineEl);
+      termOutput.appendChild(termCursor);
+
+      for (let i = 0; i < lineData.text.length; i++) {
+        lineEl.textContent += lineData.text[i];
+        termBody.scrollTop = termBody.scrollHeight;
+        await new Promise(r => setTimeout(r, 10 + Math.random() * 15));
+      }
+      await new Promise(r => setTimeout(r, 200 + Math.random() * 300));
+    }
+
+    for (const line of lines) {
+      await typeLine(line);
+    }
+    
+    // Show report
+    await new Promise(r => setTimeout(r, 400));
+    reportSection.style.display = 'block';
+    
+    // Animate numbers
+    animateValue('reportSavings', 184500, formatCurrency);
+    animateValue('reportSeats', 47, n => n);
+    animateValue('reportRisks', 3, n => n);
+    animateValue('reportDuplicate', 8, n => n);
+    
+    // Let user see report before success screen
+    await new Promise(r => setTimeout(r, 3000));
+  }
+
   // Handle Form Submission
   leadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Show spinner on button
     submitBtn.classList.add('loading');
 
     const formData = new FormData(leadForm);
+    const company = formData.get('company');
     const payload = {
       email: formData.get('email'),
-      company: formData.get('company')
+      company: company
     };
     
     try {
-      const response = await fetch('/api/submit-audit', {
+      // Fire the fetch but don't await its UI state immediately
+      const fetchPromise = fetch('/api/submit-audit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -332,8 +391,14 @@
         body: JSON.stringify(payload)
       });
 
+      // While fetch runs in background, play UI magic
+      modalContent.style.display = 'none';
+      await playModalAnalysis(company);
+      
+      const response = await fetchPromise;
+
       if (response.ok) {
-        modalContent.style.display = 'none';
+        document.getElementById('modalAnalysis').style.display = 'none';
         modalSuccess.style.display = 'block';
       } else {
         let errorMsg = 'Failed to submit request. Please try again.';
@@ -342,10 +407,16 @@
           errorMsg = result.error || errorMsg;
         } catch (parseErr) { /* response was not JSON */ }
         console.error('API Error:', response.status, errorMsg);
+        
+        // bring form back on error
+        document.getElementById('modalAnalysis').style.display = 'none';
+        modalContent.style.display = 'block';
         alert('Error: ' + errorMsg);
       }
     } catch (error) {
       console.error('Submission Error:', error);
+      document.getElementById('modalAnalysis').style.display = 'none';
+      modalContent.style.display = 'block';
       alert('Network error. Please try again later.');
     } finally {
       submitBtn.classList.remove('loading');

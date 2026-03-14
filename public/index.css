@@ -2738,3 +2738,140 @@ input, select {
 [data-theme="light"] .form-group input:focus {
   border-color: var(--emerald-dim);
 }
+
+/* ============================================
+   MODAL ANALYSIS PHASE
+   ============================================ */
+.modal-analysis-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--emerald);
+  margin-bottom: var(--space-lg);
+}
+
+.analysis-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--emerald);
+  box-shadow: 0 0 12px var(--emerald-glow);
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+.modal-terminal {
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 230, 118, 0.06);
+  margin-bottom: var(--space-lg);
+}
+
+.modal-term-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.modal-term-title {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.modal-term-body {
+  background: #030812;
+  padding: var(--space-md);
+  min-height: 160px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: "Courier New", "Fira Code", monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--silver-dim);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 230, 118, 0.2) transparent;
+}
+
+.modal-term-body::-webkit-scrollbar {
+  width: 3px;
+}
+.modal-term-body::-webkit-scrollbar-thumb {
+  background: rgba(0, 230, 118, 0.2);
+  border-radius: 3px;
+}
+
+/* Modal Report */
+@keyframes report-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-report {
+  animation: report-fade-in 0.6s var(--ease-premium) forwards;
+}
+
+.modal-report-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--emerald);
+  margin-bottom: var(--space-md);
+}
+
+.modal-report-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.modal-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-stat-card:hover {
+  border-color: var(--border-glow);
+  box-shadow: 0 0 20px rgba(0, 230, 118, 0.06);
+}
+
+.modal-stat-value {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--emerald);
+  letter-spacing: -0.02em;
+}
+
+.modal-stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: var(--space-xs);
+}
+
+.modal-report-note {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+  opacity: 0.7;
+}
+
+[data-theme="light"] .modal-term-body {
+  background: #0c1222;
+}
+
+[data-theme="light"] .modal-terminal {
+  border-color: rgba(5, 150, 105, 0.2);
+}
