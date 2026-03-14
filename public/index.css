@@ -737,6 +737,10 @@ input, select {
   box-shadow: 0 0 30px var(--emerald-glow);
   position: relative;
   overflow: hidden;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-primary::before {
@@ -769,7 +773,9 @@ input, select {
   background: rgba(255,255,255,0.03);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-sm);
+  text-align: center;
 }
 
 .btn-secondary:hover {
