@@ -194,6 +194,8 @@
     const total = Math.round(seatSavings + contractSavings + duplicateSavings + negotiateSavings);
 
     const sentinelCost  = 15000 + (emps * 5 * 12);
+    const paybackMonths = total > 0 ? Math.max(0.5, (sentinelCost / total) * 12).toFixed(1) : '0';
+    
     // Calculate glow intensity (from 0 to 1 based on savings size up to a max value)
     // Max reference value for full glow could be $500,000
     const maxGlowRef = 500000;
