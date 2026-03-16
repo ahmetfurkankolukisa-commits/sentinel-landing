@@ -228,6 +228,19 @@
   const contractAfterLayer = document.getElementById('afterLayer');
 
   if (contractSlider && contractSliderHandle && contractAfterLayer) {
+    // Trigger AI Highlight drawing effect when the slider is seen
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            contractSlider.classList.add('is-scanned');
+          }, 600);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(contractSlider);
+
     let isDraggingSlider = false;
 
     const startSliderDrag = (e) => {
