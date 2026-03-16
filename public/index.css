@@ -2563,6 +2563,17 @@ input, select {
   .roi-result-value {
     font-size: var(--text-3xl);
   }
+
+  .modal-container {
+    padding: var(--space-xl);
+  }
+
+  .cf-turnstile {
+    transform: scale(0.9);
+    transform-origin: center;
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 /* ============================================
