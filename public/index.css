@@ -1693,6 +1693,17 @@ input, select {
   width: 48px;
   height: 48px;
   padding: 8px;
+  border-radius: var(--radius-lg);
+  animation: node-pulse 3s infinite alternate ease-in-out;
+}
+
+.outer-node:nth-child(even) {
+  animation-delay: 1.5s;
+}
+
+@keyframes node-pulse {
+  0% { box-shadow: 0 0 0 rgba(0,230,118,0); border-color: var(--border-subtle); }
+  100% { box-shadow: 0 0 20px rgba(0,230,118,0.25); border-color: rgba(0,230,118,0.4); }
 }
 
 .outer-node img {
@@ -1717,6 +1728,29 @@ input, select {
   border-radius: inherit !important;
   font-size: 36px !important;
 }
+
+.eco-laser {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  /* Dash is 20 units long, gap is 100 empty units */
+  stroke-dasharray: 20 100;
+  stroke-dashoffset: 120;
+}
+
+@keyframes shoot-laser {
+  0% { stroke-dashoffset: 120; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { stroke-dashoffset: -20; opacity: 0; }
+}
+
+.laser-1 { stroke: var(--emerald); filter: drop-shadow(0 0 6px var(--emerald)); animation: shoot-laser 2.5s infinite linear; }
+.laser-2 { stroke: var(--cyan); filter: drop-shadow(0 0 6px var(--cyan)); animation: shoot-laser 3s infinite linear 0.5s; }
+.laser-3 { stroke: var(--emerald); filter: drop-shadow(0 0 6px var(--emerald)); animation: shoot-laser 2.2s infinite linear 1.2s; }
+.laser-4 { stroke: var(--cyan); filter: drop-shadow(0 0 6px var(--cyan)); animation: shoot-laser 2.8s infinite linear 0.8s; }
+.laser-5 { stroke: var(--emerald); filter: drop-shadow(0 0 6px var(--emerald)); animation: shoot-laser 2.6s infinite linear 1.5s; }
+.laser-6 { stroke: var(--cyan); filter: drop-shadow(0 0 6px var(--cyan)); animation: shoot-laser 3.1s infinite linear 0.2s; }
 
 [data-theme="light"] .eco-path {
   stroke: rgba(0, 0, 0, 0.1);
