@@ -1622,6 +1622,46 @@ input, select {
   display: none; 
 }
 
+/* --- MOBILE RESPONSIVENESS FOR SLIDER --- */
+@media (max-width: 768px) {
+  .contract-slider-container {
+    min-height: 620px;
+  }
+  
+  .contract-layer {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .layer-label {
+    top: var(--space-sm);
+    font-size: 9px;
+  }
+  .before-label { right: var(--space-sm); }
+  .after-label { left: var(--space-sm); }
+
+  .contract-text-body {
+    margin-top: var(--space-2xl);
+  }
+
+  .contract-text-body h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+    padding-bottom: 4px;
+  }
+
+  .contract-text-body p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Hide huge tooltips that overflow on mobile */
+  .ai-highlight::after {
+    display: none;
+  }
+}
+
+
 
 /* ============================================
    ECOSYSTEM / INTEGRATIONS WEB
