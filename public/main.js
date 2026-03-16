@@ -221,6 +221,55 @@
   updateROI();
 
   /* ═══════════════════════════════════════════
+     4.5 BEFORE / AFTER CONTRACT SLIDER
+     ═══════════════════════════════════════════ */
+  const contractSlider = document.getElementById('contractSlider');
+  const contractSliderHandle = document.getElementById('sliderHandle');
+  const contractAfterLayer = document.getElementById('afterLayer');
+
+  if (contractSlider && contractSliderHandle && contractAfterLayer) {
+    let isDraggingSlider = false;
+
+    const startSliderDrag = (e) => {
+      isDraggingSlider = true;
+      document.body.style.userSelect = 'none'; // Prevent text selection globally while dragging
+    };
+
+    const stopSliderDrag = () => {
+      isDraggingSlider = false;
+      document.body.style.userSelect = '';
+    };
+
+    const moveSliderDrag = (e) => {
+      if (!isDraggingSlider) return;
+      
+      let clientX = e.clientX;
+      if (e.touches && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+      }
+      
+      const rect = contractSlider.getBoundingClientRect();
+      let xPos = clientX - rect.left;
+      
+      // Clamp between 0 and 100%
+      xPos = Math.max(0, Math.min(xPos, rect.width));
+      const percent = (xPos / rect.width) * 100;
+      
+      contractSliderHandle.style.left = `${percent}%`;
+      contractAfterLayer.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
+    };
+
+    contractSliderHandle.addEventListener('mousedown', startSliderDrag);
+    contractSliderHandle.addEventListener('touchstart', startSliderDrag, { passive: true });
+
+    window.addEventListener('mouseup', stopSliderDrag);
+    window.addEventListener('touchend', stopSliderDrag);
+
+    window.addEventListener('mousemove', moveSliderDrag);
+    window.addEventListener('touchmove', moveSliderDrag, { passive: true });
+  }
+
+  /* ═══════════════════════════════════════════
      5. MAGNETIC BUTTONS
      ═══════════════════════════════════════════ */
   document.querySelectorAll('.magnetic').forEach(btn => {

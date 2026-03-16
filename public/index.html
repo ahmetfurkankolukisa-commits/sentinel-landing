@@ -389,6 +389,57 @@
 
 
 <!-- ============================================
+     BEFORE / AFTER CONTRACT SLIDER
+     ============================================ -->
+<section class="slider-section reveal" id="contract-analysis">
+  <div class="container">
+    <div class="section-header" style="text-align: center; margin-bottom: var(--space-4xl);">
+      <span class="section-label"><span class="dot"></span> Smart Analysis</span>
+      <h2 class="section-title">See Sentinel in <span class="highlight">Action</span></h2>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        Drag the slider to experience how our AI reads through dense legal jargon and instantly highlights financial risks, auto-renewals, and hidden costs.
+      </p>
+    </div>
+
+    <div class="contract-slider-wrapper">
+      <div class="contract-slider-container" id="contractSlider">
+        
+        <!-- BEFORE: Raw Contract -->
+        <div class="contract-layer before-layer">
+          <div class="layer-label before-label">Original Contract</div>
+          <div class="contract-text-body">
+            <h3>8. Term and Termination</h3>
+            <p>8.1 <strong>Initial Term.</strong> This Agreement shall commence on the Effective Date and continue for an initial hardware and software licensing period of thirty-six (36) months ("Initial Term").</p>
+            <p>8.2 <strong>Automatic Renewal.</strong> Upon the expiration of the Initial Term, this Agreement shall automatically renew for successive periods equal to the Initial Term (each a "Renewal Term"). During any Renewal Term, the Vendor reserves the right to increase all recurring fees to the then-current list price plus an automatic 15% annual escalator, unless either party provides written notice of non-renewal at least ninety (90) days prior to the expiration of the then-current term.</p>
+            <p>8.3 <strong>Waiver.</strong> By failing to provide such ninety-day advance notice, Customer hereby waives all rights to contest the aforementioned renewal fees, modified terms, or service tier adjustments.</p>
+          </div>
+        </div>
+
+        <!-- AFTER: Sentinel Analysis -->
+        <div class="contract-layer after-layer" id="afterLayer">
+          <div class="layer-label after-label"><span style="color:var(--emerald);">●</span> Sentinel AI Analysis</div>
+          <div class="contract-text-body">
+            <h3>8. Term and Termination</h3>
+            <p>8.1 <strong>Initial Term.</strong> This Agreement shall commence on the Effective Date and continue for an initial hardware and software licensing period of thirty-six (36) months ("Initial Term").</p>
+            <p>8.2 <strong>Automatic Renewal.</strong> Upon the expiration of the Initial Term, this Agreement shall automatically renew for successive periods equal to the Initial Term (each a "Renewal Term"). During any Renewal Term, the Vendor reserves the right to increase all recurring fees to <span class="ai-highlight danger" data-tooltip="Critical Risk: Uncapped 15% Escalator">the then-current list price plus an automatic 15% annual escalator</span>, unless either party provides written notice of non-renewal at least <span class="ai-highlight warning" data-tooltip="Action Required: 90-Day Notice Period">ninety (90) days</span> prior to the expiration of the then-current term.</p>
+            <p>8.3 <strong>Waiver.</strong> <span class="ai-highlight danger" data-tooltip="Legal Risk: Unconditional Waiver of Rights">By failing to provide such ninety-day advance notice, Customer hereby waives all rights to contest the aforementioned renewal fees, modified terms, or service tier adjustments.</span></p>
+          </div>
+        </div>
+
+        <!-- THE DRAG HANDLE -->
+        <div class="slider-handle" id="sliderHandle">
+          <div class="handle-arrow">&lt;</div>
+          <div class="handle-line"></div>
+          <div class="handle-arrow">&gt;</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
      ROI CALCULATOR
      ============================================ -->
 <section class="roi-section reveal" id="calculator">
